@@ -8,14 +8,14 @@
   :min-lein-version "2.6.1"
 
   :dependencies [[org.clojure/clojure "1.8.0"]
-                 [org.clojure/clojurescript "1.7.228"]
+                 [org.clojure/clojurescript "1.10.238"]
                  [org.clojure/core.async "0.2.374" :exclusions [org.clojure/tools.reader]]
                  [thi.ng/geom "0.0.1062"]
                  [thi.ng/color "1.1.1"]
                  [cljs-log "0.2.2"]
                  [reagent "0.5.1"]]
 
-  :plugins      [[lein-figwheel "0.5.2"]
+  :plugins      [[lein-figwheel "0.5.18"]
                  [lein-cljsbuild "1.1.3" :exclusions [[org.clojure/clojure]]]]
 
   :source-paths ["src"]

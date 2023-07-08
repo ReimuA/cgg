@@ -41,6 +41,7 @@
                 :grid   {:minor-x true :minor-y true}}}))
 
 (def fmt-vec (let [ff (f/float 3)] #(apply f/format ["[" ff " " ff " " ff "]"] %)))
+(def fmt-vec2 (let [ff (f/float 3)] #(apply f/format ["vec3("ff "," ff "," ff ")"] %)))
 
 (defn channel-specs
   [colors]
@@ -186,6 +187,18 @@
          [gradient-graph]
          [gradient-controls]
          [:p "Vector of coefficients for the above shown gradient:" [:br] [:pre "[" coeffs' "]"]]
+         (let [[c1 c2 c3 c4] (mapv fmt-vec2 @coeffs)]
+         [:p "Glsl:" [:br]
+          [:pre 
+           "vec3 palette(float t) {"[:br]
+           "    vec3 a="c1";"[:br]
+           "    vec3 b="c2";"[:br]
+           "    vec3 c="c3";"[:br]
+           "    vec3 d="c4";"[:br]
+           "    return a+b*cos(6.28318*(c*t+d));"[:br]
+         "}"]]
+           )
+
          [:p "To sample the gradient and produce a seq of N RGBA colors:"
           [:pre "(require '[thi.ng.color.gradients :as grad])\n\n(grad/cosine-gradient\n  100 [" coeffs' "]))"]]]))))
 
