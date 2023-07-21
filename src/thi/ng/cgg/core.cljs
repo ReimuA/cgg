@@ -42,6 +42,7 @@
 
 (def fmt-vec (let [ff (f/float 3)] #(apply f/format ["[" ff " " ff " " ff "]"] %)))
 (def fmt-vec2 (let [ff (f/float 3)] #(apply f/format ["vec3("ff "," ff "," ff ")"] %)))
+(def fmt-vec3 (let [ff (f/float 3)] #(apply f/format ["{x:"ff ",y:" ff ",z:" ff ")"] %)))
 
 (defn channel-specs
   [colors]
@@ -196,6 +197,22 @@
            "    vec3 c="c3";"[:br]
            "    vec3 d="c4";"[:br]
            "    return a+b*cos(6.28318*(c*t+d));"[:br]
+         "}"]]
+           )
+
+           (let [[c1 c2 c3 c4] (mapv fmt-vec2 @coeffs)]
+         [:p "Ts:" [:br]
+          [:pre 
+           "export function palette(t: number): Color {"[:br]
+           "    const a: XYZ="c1[:br]
+           "    const b: XYZ="c2[:br]
+           "    const c: XYZ="c3[:br]
+           "    const d: XYZ="c4[:br]
+           " return {"
+            " r: a.x+b.x*Math.cos(6.28318*(c.x*t+d.x)),",[:br]
+            " g: a.y+b.y*Math.cos(6.28318*(c.y*t+d.y)),",[:br]
+            " b: a.z+b.z*Math.cos(6.28318*(c.z*t+d.z)),",[:br]
+           "}"[:br]
          "}"]]
            )
 
