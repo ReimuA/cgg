@@ -10,9 +10,9 @@ Gradient method originally developed by [Íñigo Quílez](http://www.iquilezles.
 
 To get an interactive development environment run:
 
-    rlwrap lein do clean, figwheel
+    lein figwheel
 
-and open your browser at [localhost:3449](http://localhost:3449/).
+and open your browser at [localhost:3449](http://localhost:3449/). NOT 0.0.0.0:3449
 This will auto compile and send all changes to the browser without the
 need to reload. After the compilation process is complete, you will
 get a Browser Connected REPL.
