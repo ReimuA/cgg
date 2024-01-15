@@ -199,6 +199,17 @@
            "    return a+b*cos(6.28318*(c*t+d));"[:br]
          "}"]]
            )
+          (let [[c1 c2 c3 c4] (mapv fmt-vec2 @coeffs)]
+          [:p "Wgsl:" [:br]
+          [:pre 
+           "fn palette(t: f32) -> vec3<f32> {"[:br]
+           "    var a = "c1";"[:br]
+           "    var b = "c2";"[:br]
+           "    var c = "c3";"[:br]
+           "    var d = "c4";"[:br]
+           "    return a+b*cos(6.28318*(c*t+d));"[:br]
+         "}"]]
+           )
 
            (let [[c1 c2 c3 c4] (mapv fmt-vec3 @coeffs)]
          [:p "Ts:" [:br]
